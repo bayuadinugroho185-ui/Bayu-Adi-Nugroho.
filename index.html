@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portofolio — Bayu Adi Nugroho</title>
+  <meta name="description" content="Portofolio Bayu Adi Nugroho — UX, keamanan sistem informasi, desain digital."/>
+  <style>
+    /* =========================
+       Reset & base
+       ========================= */
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#98a0b3;
+      --accent:#6ee7b7;
+      --accent-2:#60a5fa;
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+      --maxw:1100px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,#071021 0%, #071827 60%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:40px 20px;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+    }
+
+    /* =========================
+       Container
+       ========================= */
+    .wrap{
+      width:100%;
+      max-width:var(--maxw);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:20px;
+      padding:28px;
+      box-shadow: 0 6px 30px rgba(2,6,23,0.7), inset 0 1px 0 rgba(255,255,255,0.02);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+
+    header{
+      display:flex;
+      gap:20px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:22px;
+    }
+    .brand{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+    .logo{
+      width:64px;
+      height:64px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--accent-2),var(--accent));
+      display:grid;
+      place-items:center;
+      font-weight:700;
+      font-size:20px;
+      color:#06202b;
+      box-shadow: 0 6px 18px rgba(96,165,250,0.12);
+    }
+    .title{
+      line-height:1;
+    }
+    .title h1{margin:0;font-size:18px}
+    .title p{margin:0;font-size:13px;color:var(--muted)}
+
+    /* nav & actions */
+    .actions{display:flex;gap:8px;align-items:center}
+    .btn{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.06);
+      padding:8px 12px;
+      border-radius:10px;
+      color:var(--muted);
+      font-size:13px;
+      cursor:pointer;
+      transition:all .18s ease;
+    }
+    .btn:hover{transform:translateY(-3px); color:var(--accent)}
+
+    /* main layout */
+    .grid{
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap:20px;
+    }
+    @media (max-width:880px){ .grid{grid-template-columns:1fr} .header-right{order:3} }
+
+    /* left column */
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      padding:18px;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .avatar{
+      width:100%;
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .avatar img{
+      width:84px;
+      height:84px;
+      border-radius:12px;
+      object-fit:cover;
+      border:3px solid rgba(255,255,255,0.03);
+      background:linear-gradient(135deg,var(--accent-2),var(--accent));
+    }
+    .meta h2{margin:0;font-size:18px}
+    .meta p{margin:4px 0 0;color:var(--muted);font-size:13px}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .badge{
+      font-size:12px;
+      padding:6px 8px;
+      background:var(--glass);
+      border-radius:999px;
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.02);
+    }
+
+    hr.sep{border:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.02),transparent);margin:14px 0}
+
+    .contact-list{display:grid;gap:8px;margin-top:8px}
+    .contact-item{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .skills{display:flex;flex-direction:column;gap:8px}
+    .skill{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:8px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .meter{
+      flex:1;
+      height:10px;
+      background:rgba(255,255,255,0.03);
+      border-radius:999px;
+      overflow:hidden;
+      margin-left:8px;
+    }
+    .meter > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));}
+
+    /* right column */
+    .section{margin-bottom:18px}
+    .section h3{margin:0 0 12px;font-size:16px}
+    .hero{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      align-items:center;
+    }
+    .intro{
+      max-width:60%;
+      color:var(--muted);
+    }
+    @media (max-width:880px){ .intro{max-width:100%} }
+
+    .projects{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:12px;
+    }
+    @media (max-width:720px){ .projects{grid-template-columns:1fr} }
+
+    .project{
+      padding:12px;
+      border-radius:12px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .project h4{margin:0 0 6px;font-size:14px}
+    .project p{margin:0;color:var(--muted);font-size:13px}
+    .project .tags{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+    .small-tag{font-size:12px;padding:5px 8px;background:rgba(255,255,255,0.02);border-radius:8px;color:var(--muted)}
+
+    /* CTA footer */
+    footer{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-top:14px;
+    }
+    .download{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#05232a;
+      padding:10px 14px;
+      border-radius:12px;
+      font-weight:600;
+      text-decoration:none;
+    }
+
+    /* subtle utilities */
+    .muted{color:var(--muted)}
+    .ghost{opacity:.85}
+    code.snip{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:8px;font-size:13px;color:var(--accent-2)}
+
+    /* accessibility focus */
+    .btn:focus, .download:focus, a:focus {outline:3px solid rgba(96,165,250,0.12); outline-offset:2px}
+  </style>
+</head>
+<body>
+  <main class="wrap" role="main" aria-label="Portofolio Bayu Adi Nugroho">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">BAN</div>
+        <div class="title">
+          <h1>Bayu Adi Nugroho</h1>
+          <p class="muted">UX Designer • Keamanan Sistem Informasi • Desain Produk Digital</p>
+        </div>
+      </div>
+
+      <div class="actions header-right" aria-hidden="false">
+        <button class="btn" id="themeToggle" title="Toggle theme">Toggle Tema</button>
+        <a class="btn" href="#contact" title="Hubungi saya">Hubungi</a>
+      </div>
+    </header>
+
+    <section class="grid">
+      <!-- LEFT: profil singkat -->
+      <aside class="card" aria-labelledby="aboutTitle">
+        <div class="avatar">
+          <!-- Ganti src dengan foto kamu -->
+          <img src="https://via.placeholder.com/300x300.png?text=Foto+Anda" alt="Foto Bayu Adi Nugroho" />
+          <div class="meta">
+            <h2 id="aboutTitle">Bayu Adi Nugroho</h2>
+            <p>Desainer UX & Penjaga Keamanan Sistem Informasi. Saya suka membuat antarmuka yang sederhana, aman, dan dapat diproduksi.</p>
+            <div class="badges" aria-hidden="true">
+              <span class="badge">UX Research</span>
+              <span class="badge">InfoSec</span>
+              <span class="badge">Figma</span>
+              <span class="badge">Prototyping</span>
+            </div>
+          </div>
+        </div>
+
+        <hr class="sep" />
+
+        <div>
+          <h4 class="muted" style="margin:0 0 8px 0">Kontak</h4>
+          <div class="contact-list">
+            <div class="contact-item"><strong>Email:</strong>&nbsp;<span class="muted">bayu@example.com</span></div>
+            <div class="contact-item"><strong>Telepon:</strong>&nbsp;<span class="muted">+62 812 3456 7890</span></div>
+            <div class="contact-item"><strong>Lokasi:</strong>&nbsp;<span class="muted">Indonesia</span></div>
+            <div class="contact-item"><strong>LinkedIn:</strong>&nbsp;<a href="#" class="muted">linkedin.com/in/bayu</a></div>
+          </div>
+        </div>
+
+        <hr class="sep" />
+
+        <div>
+          <h4 class="muted" style="margin:0 0 8px 0">Keahlian</h4>
+          <div class="skills">
+            <div class="skill">UX Research <div class="meter" aria-hidden="true"><i style="width:88%"></i></div></div>
+            <div class="skill">Prototyping <div class="meter" aria-hidden="true"><i style="width:82%"></i></div></div>
+            <div class="skill">Keamanan SI <div class="meter" aria-hidden="true"><i style="width:74%"></i></div></div>
+            <div class="skill">Visual Design <div class="meter" aria-hidden="true"><i style="width:70%"></i></div></div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- RIGHT: konten utama -->
+      <div>
+        <section class="card section hero" aria-labelledby="introTitle">
+          <div>
+            <h3 id="introTitle">Halo — saya Bayu</h3>
+            <p class="intro muted">Saya merancang produk digital dengan fokus pada pengalaman pengguna yang sederhana dan praktik keamanan yang kuat. Saya bekerja pada project UX, prototyping, dan kadang-kadang desain sepatu digital (konsep 'MORSE'). Berikut beberapa project terpilih dan cara menghubungi saya.</p>
+            <p style="margin-top:12px"><a class="download" href="#" id="downloadCV">Download CV (PDF)</a></p>
+          </div>
+          <div aria-hidden="true" class="ghost" style="min-width:180px;text-align:right">
+            <div style="font-size:12px;color:var(--muted)">Status</div>
+            <div style="font-weight:700;font-size:18px;margin-top:6px">Terbuka untuk proyek</div>
+            <div style="color:var(--muted);margin-top:8px">Tersedia untuk freelance & kolaborasi</div>
+          </div>
+        </section>
+
+        <section class="card section" aria-labelledby="projectsTitle">
+          <h3 id="projectsTitle">Proyek Terpilih</h3>
+          <div class="projects" id="projectsGrid">
+            <!-- Project 1 -->
+            <article class="project" tabindex="0" aria-labelledby="p1">
+              <h4 id="p1">Analisis UX Aplikasi Keamanan</h4>
+              <p>Menganalisis alur pendaftaran & otentikasi untuk mengurangi kegagalan masuk dan meningkatkan keamanan tanpa mengorbankan UX.</p>
+              <div class="tags"><span class="small-tag">UX Research</span><span class="small-tag">InfoSec</span></div>
+            </article>
+
+            <!-- Project 2 -->
+            <article class="project" tabindex="0" aria-labelledby="p2">
+              <h4 id="p2">Prototype Platform E-Learning</h4>
+              <p>Prototipe interaktif untuk platform belajar, termasuk dashboard guru & siswa, serta modul penilaian otomatis.</p>
+              <div class="tags"><span class="small-tag">Figma</span><span class="small-tag">Prototyping</span></div>
+            </article>
+
+            <!-- Project 3 -->
+            <article class="project" tabindex="0" aria-labelledby="p3">
+              <h4 id="p3">MORSE — Konsep Sepatu Digital</h4>
+              <p>Desain konsep sepatu digital dengan varian warna, branding, dan mockup presentasi untuk pitch produk.</p>
+              <div class="tags"><span class="small-tag">Branding</span><span class="small-tag">Design System</span></div>
+            </article>
+
+            <!-- Project 4 -->
+            <article class="project" tabindex="0" aria-labelledby="p4">
+              <h4 id="p4">Panduan Kebijakan Keamanan</h4>
+              <p>Menyusun kebijakan dasar keamanan informasi untuk organisasi kecil—dengan perhatian pada pelatihan & respons insiden.</p>
+              <div class="tags"><span class="small-tag">Policy</span><span class="small-tag">Training</span></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="card section" id="contact" aria-labelledby="contactTitle">
+          <h3 id="contactTitle">Hubungi Saya</h3>
+          <p class="muted">Isi form ringkas ini atau langsung kirim email. Saya akan membalas secepat mungkin.</p>
+
+          <form id="contactForm" style="margin-top:12px;display:grid;gap:8px" onsubmit="return handleSubmit(event)" novalidate>
+            <label style="display:flex;flex-direction:column;gap:6px">
+              <span class="muted">Nama</span>
+              <input name="name" required placeholder="Nama Anda" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit"/>
+            </label>
+
+            <label style="display:flex;flex-direction:column;gap:6px">
+              <span class="muted">Email</span>
+              <input name="email" type="email" required placeholder="email@domain.com" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit"/>
+            </label>
+
+            <label style="display:flex;flex-direction:column;gap:6px">
+              <span class="muted">Pesan</span>
+              <textarea name="message" required rows="4" placeholder="Halo, saya ingin..." style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit"></textarea>
+            </label>
+
+            <div style="display:flex;gap:8px;align-items:center">
+              <button class="download" type="submit">Kirim Pesan</button>
+              <div class="muted" id="formStatus" aria-live="polite"></div>
+            </div>
+          </form>
+
+        </section>
+
+        <footer>
+          <div class="muted">© <span id="year"></span> Bayu Adi Nugroho — Built with care.</div>
+          <div class="muted">Made with <span class="ghost">UX + Security</span></div>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Small interactivity: theme toggle, CV download placeholder, form handling
+    (function(){
+      const themeBtn = document.getElementById('themeToggle');
+      const yearEl = document.getElementById('year');
+      yearEl.textContent = new Date().getFullYear();
+
+      // Simple theme toggle (dark/light) by inlining CSS variables
+      let light = false;
+      themeBtn.addEventListener('click', () => {
+        light = !light;
+        if(light){
+          document.documentElement.style.setProperty('--bg','#f7fafc');
+          document.documentElement.style.setProperty('--card','#ffffff');
+          document.documentElement.style.setProperty('--muted','#4b5563');
+          document.documentElement.style.setProperty('--accent','#22c55e');
+          document.documentElement.style.setProperty('--accent-2','#3b82f6');
+          document.body.style.background = 'linear-gradient(180deg,#f8fafc,#eef2ff)';
+          document.querySelectorAll('.logo').forEach(l=>l.style.color='#042027');
+          themeBtn.textContent = 'Tema Gelap';
+        } else {
+          document.documentElement.style.setProperty('--bg','#0f1724');
+          document.documentElement.style.setProperty('--card','#0b1220');
+          document.documentElement.style.setProperty('--muted','#98a0b3');
+          document.documentElement.style.setProperty('--accent','#6ee7b7');
+          document.documentElement.style.setProperty('--accent-2','#60a5fa');
+          document.body.style.background = 'linear-gradient(180deg,#071021,#071827)';
+          document.querySelectorAll('.logo').forEach(l=>l.style.color='#06202b');
+          themeBtn.textContent = 'Toggle Tema';
+        }
+      });
+
+      // Download CV placeholder: replace href with actual CV file path
+      document.getElementById('downloadCV').addEventListener('click', function(e){
+        e.preventDefault();
+        const url = '#'; // Ganti dengan url CV, misal '/files/Bayu-CV.pdf'
+        alert('Ganti variable "url" pada script jika ingin mengarahkan ke file CV.'); 
+        // If you have a real file, do: window.location = url;
+      });
+
+      // Form submission: open mailto or send to endpoint (placeholder)
+      window.handleSubmit = function(e){
+        e.preventDefault();
+        const f = e.target;
+        const data = {
+          name: f.name.value.trim(),
+          email: f.email.value.trim(),
+          message: f.message.value.trim()
+        };
+        if(!data.name || !data.email || !data.message){
+          showStatus('Mohon isi semua field.', true);
+          return false;
+        }
+
+        // Simple mailto fallback
+        const subject = encodeURIComponent('Pesan dari portofolio: ' + data.name);
+        const body = encodeURIComponent(data.message + '\n\n---\n' + data.name + '\n' + data.email);
+        window.location.href = 'mailto:bayu@example.com?subject=' + subject + '&body=' + body;
+        showStatus('Membuka aplikasi email Anda...', false);
+        return false;
+      };
+
+      function showStatus(msg, isError){
+        const st = document.getElementById('formStatus');
+        st.textContent = msg;
+        st.style.color = isError ? '#fca5a5' : 'var(--accent-2)';
+        setTimeout(()=>{ st.textContent = ''; }, 4500);
+      }
+
+      // Accessibility: keyboard focus for project cards (small enhancement)
+      document.querySelectorAll('.project').forEach(p=>{
+        p.addEventListener('keydown', (ev)=>{
+          if(ev.key === 'Enter' || ev.key === ' '){
+            ev.preventDefault();
+            p.style.transform = 'translateY(-4px)';
+            setTimeout(()=>p.style.transform = '', 220);
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
